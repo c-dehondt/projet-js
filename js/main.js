@@ -1,11 +1,12 @@
 
 // *************************************exercice 1**************************************************
 // ************************************************************************************************
+var temp=[];
 
 var user= {
   nom:"Dehondt",
   prenom:"Christopher",
-  residence:"Mouchin",
+  residence:"mouchin",
   age:"32",
   paiments: "visa, mastercard, cartebleu",
 
@@ -22,7 +23,7 @@ var user= {
 // ***************************************************************************************************
 
 var site={
-  ville:["ORCHIES","LILLE","MOUCHIN"],
+  villes:["ORCHIES","LILLE","MOUCHIN"],
   paiments:["VISA","MASTERCARD","CARTEBLEU"],
   ageMin:18,
 
@@ -31,8 +32,27 @@ var site={
       alert("vous êtes trop jeune");
 
     }else {
-      alert("Bienvenue sur notre site");
+      alert("Bienvenue sur notre site vous avez + de 18 ans");
       }
   },
+
+  ville:function(){
+
+      for (var i = 0; i < this.villes.length; i++) {
+        if ( user.residence.toUpperCase() == this.villes[i]) {
+        temp.push(this.villes[i]);
+      }
+    }
+        console.log(temp);
+        if (temp.length == 1) {
+          alert("Bienvenue sur notre site");
+          temp=[];
+
+        }else {
+          alert("ville incorrecte");
+          }
+  }
 };
+
 site.age();
+site.ville();
