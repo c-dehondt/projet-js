@@ -91,31 +91,48 @@ function fichePersonnage(nom, attaque, defence, sante,) {
    this.combat = function (ennemi) {
 
      if (this.attaque > ennemi.defence) {
-      ennemi.sante -= this.attaque;
-      console.log(ennemi.sante);
+      ennemi.sante -= this.attaque - ennemi.defence;
+      console.log(this.nom+ " : " +"attaque"+ "  ===> " + ennemi.nom);
+      console.log(ennemi.nom +" : "+ ennemi.sante);
+
+      if (ennemi.sante <= 0){
+        console.log(ennemi.nom+ " " + "a perdu");
     };
-   }
- }
+  }
+}
 
-var personnage1= new fichePersonnage( "chris", 5, 3, 10);
-var personnage2= new fichePersonnage( "albert", 3, 3, 10);
+    this.soin = function () {
+      if (this.sante<=5 && this.mana>=10 ) {
+          this.mana -= 10;
+          this.sante += 10;
+          console.log(this.nom + " = "+this.sante);
 
-while (personnage1.sante >= 0 && personnage2.sante >= 0){
+      }
+    };
+}
 
+var personnage1= new fichePersonnage( "chris", 5, 4, 10);
+var personnage2= new fichePersonnage( "albert", 5, 2, 10);
+var magicien = new fichePersonnage("sorcier", 5, 1, 15);
+magicien.mana=10;
+
+console.log(personnage1);
+console.log(personnage2);
+console.log(magicien);
+
+while (personnage1.sante >= 0 && personnage2.sante >= 0 && magicien.sante >0){
   if (personnage1.sante > 0){
-    personnage1.combat(personnage2);
-      console.log(personnage1.nom+ " " +"attaque");
+    personnage1.combat(magicien);
+    magicien.soin();
   }
 
   if (personnage2.sante > 0) {
-    personnage2.combat(personnage1);
-    console.log(personnage2.nom+ " " +"attaque");
+    personnage2.combat(magicien);
+    magicien.soin();
   }
 
+  if (magicien.sante > 0) {
+    magicien.combat(personnage2, personnage1);
+    magicien.soin();
+  }
 }
-
-  if (personnage1.sante <= 0){
-    console.log(personnage1.nom+ " " + "a perdu");
-  }else {
-    console.log(personnage2.nom+ " " + "a perdu");
-  }
