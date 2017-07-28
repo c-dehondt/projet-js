@@ -92,11 +92,11 @@ function fichePersonnage(nom, attaque, defence, sante,) {
 
      if (this.attaque > ennemi.defence) {
       ennemi.sante -= this.attaque - ennemi.defence;
-      console.log(this.nom+ " : " +"attaque"+ "  ===> " + ennemi.nom);
-      console.log(ennemi.nom +" : "+ ennemi.sante);
+      // console.log(this.nom+ " : " +"attaque"+ "  ===> " + ennemi.nom);
+      // console.log(ennemi.nom +" : "+ ennemi.sante);
 
       if (ennemi.sante <= 0){
-        console.log(ennemi.nom+ " " + "a perdu");
+        // console.log(ennemi.nom+ " " + "a perdu");
     };
   }
 }
@@ -105,7 +105,7 @@ function fichePersonnage(nom, attaque, defence, sante,) {
       if (this.sante<=5 && this.mana>=10 ) {
           this.mana -= 10;
           this.sante += 10;
-          console.log(this.nom + " = "+this.sante);
+          // console.log(this.nom + " soin '+10' = "+this.sante);
 
       }
     };
@@ -113,12 +113,12 @@ function fichePersonnage(nom, attaque, defence, sante,) {
 
 var personnage1= new fichePersonnage( "chris", 5, 4, 10);
 var personnage2= new fichePersonnage( "albert", 5, 2, 10);
-var magicien = new fichePersonnage("sorcier", 5, 1, 15);
+var magicien = new fichePersonnage("sorcier", 4, 2, 15);
 magicien.mana=10;
 
-console.log(personnage1);
-console.log(personnage2);
-console.log(magicien);
+// console.log(personnage1);
+// console.log(personnage2);
+// console.log(magicien);
 
 while (personnage1.sante >= 0 && personnage2.sante >= 0 && magicien.sante >0){
   if (personnage1.sante > 0){
@@ -132,7 +132,34 @@ while (personnage1.sante >= 0 && personnage2.sante >= 0 && magicien.sante >0){
   }
 
   if (magicien.sante > 0) {
-    magicien.combat(personnage2, personnage1);
+    magicien.combat(personnage2);
+    magicien.combat(personnage1);
     magicien.soin();
   }
 }
+
+// ************************************************exercice 3***********************************************
+// ************************************************************************************************************
+// *****************************************************************************************************
+
+function ficheProduit(titre, slogan, description) {
+  this.titre=titre;
+  this.slogan=slogan;
+  this.description=description;
+
+this.affiche = function(){
+    $("#fiche").append("<div class='card col-4' >"+"<div class='card-block'>" +
+    "<p class='card-title rounded card-success mb-3 text-center'>" + this.titre +"</p>"+ "<p class='card-text rounded card-info mb-3 text-center'>" + this.slogan+"</p>" +
+    "<p class='card-text rounded card-warning mb-3 text-center'>" + this.description +"</p>"+ "</div>"+"</div>");
+}
+}
+
+
+$("#envoyer").click(function(){
+  var nouveauProduit = new ficheProduit ($("#titre").val(), $("#slogan").val(), $("#description").val());
+  console.log(nouveauProduit);
+  nouveauProduit.affiche();
+  $("#titre").val("");
+  $("#slogan").val("");
+  $("#description").val("");
+})
