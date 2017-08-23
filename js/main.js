@@ -163,3 +163,24 @@ $("#envoyer").click(function(){
   $("#slogan").val("");
   $("#description").val("");
 })
+
+
+// ***************************************************************************exercice 4***********************************************************
+// *****************************************************************************************************************************************************
+// *******************************************************************************************************************************************
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    console.table(myObj.user);
+    for (var i in myObj.user ) {
+
+      document.getElementById("demo").innerHTML += "<tr><td>"+ myObj.user[i].nom +"</td><td>"+ myObj.user[i].prenom +"</td><td>"+ myObj.user[i].age +"</td><td>"+ myObj.user[i].taille +"</td></tr>";
+    }
+
+  }
+};
+xmlhttp.open("GET", "json/main.json", true);
+xmlhttp.send();
+
