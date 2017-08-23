@@ -1,0 +1,10 @@
+{
+  "user":[
+    { "nom":"Dehondt", "prenom":"chris", "age":"32", "taille":"1.80"},
+    { "nom":"Montois", "prenom":"Mathieu", "age":"32", "taille":"1.82"},
+    { "nom":"Veahaghe", "prenom":"Marie", "age":"84", "taille":"1.65"},
+    { "nom":"Mortreux", "prenom":"Joel", "age":"55", "taille":"1.70"},
+    { "nom":"Veahaghe", "prenom":"chrichou", "age":"54", "taille":"1.75"},
+    { "nom":"Montois", "prenom":"Pauline", "age":"27", "taille":"1.72"}
+  ]
+}
