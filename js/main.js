@@ -181,6 +181,6 @@ xmlhttp.onreadystatechange = function() {
 
   }
 };
-xmlhttp.open("GET", "json/main.json", true);
+xmlhttp.open("GET", "main.json", true);
 xmlhttp.send();
 
